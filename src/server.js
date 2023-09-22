@@ -107,11 +107,11 @@ function quitarTildesYMayusculas(texto) {
     let textoAux = texto.toLowerCase();
 
     // Reemplaza las letras acentuadas por sus equivalentes sin acento
-    textoAux = texto.replace(/[áäàâ]/gu, 'a');
-    textoAux = texto.replace(/[éëèê]/gu, 'e');
-    textoAux = texto.replace(/[íïìî]/gu, 'i');
-    textoAux = texto.replace(/[óöòô]/gu, 'o');
-    textoAux = texto.replace(/[úüùû]/gu, 'u');
+    textoAux = textoAux.replace(/[áäàâ]/gu, 'a');
+    textoAux = textoAux.replace(/[éëèê]/gu, 'e');
+    textoAux = textoAux.replace(/[íïìî]/gu, 'i');
+    textoAux = textoAux.replace(/[óöòô]/gu, 'o');
+    textoAux = textoAux.replace(/[úüùû]/gu, 'u');
 
     return textoAux;
 }
@@ -144,7 +144,7 @@ server.get('/catalogo/genero/:genero', async (req, res) => {
         agregarRutaPosterCatalogo(peliculas);
 
         if (peliculas.length === 0 || !esGeneroValido) {
-            return res.status(400).send(JSON.stringify({message: 'No hay peliculas/series con ese genero'}));
+            return res.status(400).send(JSON.stringify({message: 'No hay peliculas/series con ese genero,consule la lista de generos'}));
         }
 
         res.status(200).send(JSON.stringify({payload: peliculas}));
@@ -179,7 +179,7 @@ server.get('/catalogo/categoria/:categoria', async (req, res) => {
         });
         agregarRutaPosterCatalogo(peliculas);
         if (peliculas.length === 0 || !esCategoriaValida) {
-            return res.status(400).send(JSON.stringify({message: 'No hay peliculas/series con esa categoria'}));
+            return res.status(400).send(JSON.stringify({message: 'No hay peliculas/series con esa categoria,consule la lista de categorias'}));
         }
         res.status(200).send(JSON.stringify({payload: peliculas}));
     } catch (error) {
