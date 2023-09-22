@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `actores`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `actores` (
   `idActor` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idActor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS `categorias`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categorias` (
   `idCategoria` int NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idCategoria`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -94,7 +94,7 @@ DROP TABLE IF EXISTS `generos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `generos` (
   `idGenero` int NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idGenero`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -118,11 +118,11 @@ DROP TABLE IF EXISTS `peliculas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `peliculas` (
   `idPelicula` int NOT NULL AUTO_INCREMENT,
-  `poster` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `titulo` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `poster` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `titulo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `idCategoria` int NOT NULL,
-  `resumen` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cantidadTemporadas` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N/A',
+  `resumen` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cantidadTemporadas` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N/A',
   PRIMARY KEY (`idPelicula`),
   KEY `Peliculas_fk0` (`idCategoria`),
   CONSTRAINT `Peliculas_fk0` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`idCategoria`)
@@ -207,7 +207,7 @@ DROP TABLE IF EXISTS `peliculastrailers`;
 CREATE TABLE `peliculastrailers` (
   `idPeliculaTrailer` int NOT NULL AUTO_INCREMENT,
   `idPelicula` int NOT NULL,
-  `trailer` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trailer` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idPeliculaTrailer`),
   KEY `PeliculasTrailers_fk0` (`idPelicula`),
   CONSTRAINT `PeliculasTrailers_fk0` FOREIGN KEY (`idPelicula`) REFERENCES `peliculas` (`idPelicula`)
@@ -222,32 +222,6 @@ LOCK TABLES `peliculastrailers` WRITE;
 /*!40000 ALTER TABLE `peliculastrailers` DISABLE KEYS */;
 INSERT INTO `peliculastrailers` VALUES (1,3,'https://www.youtube.com/embed/aOC8E8z_ifw'),(2,7,'https://www.youtube.com/embed/zAGVQLHvwOY'),(3,11,'https://www.youtube.com/embed/WBb3fojgW0Q'),(4,14,'https://www.youtube.com/embed/KKziOmsJxzE'),(5,15,'https://www.youtube.com/embed/s9APLXM9Ei8'),(6,16,'https://www.youtube.com/embed/qLFBcdd6Qw0'),(7,17,'https://www.youtube.com/embed/pWrioRji60A'),(8,20,'https://www.youtube.com/embed/VHSoCnDioAo'),(9,21,'https://www.youtube.com/embed/rBxcF-r9Ibs'),(10,22,'https://www.youtube.com/embed/AGQ7OkmIx4Q'),(11,23,'https://www.youtube.com/embed/hZeFeYSmBcg'),(12,24,'https://www.youtube.com/embed/BE6inv8Xh4A'),(13,25,'https://www.youtube.com/embed/SOVb0-2g1Q0'),(14,27,'https://www.youtube.com/embed/nat3u3gAVLE'),(15,28,'https://www.youtube.com/embed/4sYSyuuLk5g'),(16,29,'https://www.youtube.com/embed/BIn8iANwEog'),(17,30,'https://www.youtube.com/embed/XvB58bCVfng'),(18,31,'https://www.youtube.com/embed/XRYL5spvEcI'),(19,33,'https://www.youtube.com/embed/dtKMEAXyPkg');
 /*!40000 ALTER TABLE `peliculastrailers` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `products`
---
-
-DROP TABLE IF EXISTS `products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `products` (
-  `ProductID` int NOT NULL AUTO_INCREMENT,
-  `ProductName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `UnitPrice` double NOT NULL,
-  `UnitsInStock` smallint NOT NULL,
-  `Discontinued` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`ProductID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `products`
---
-
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -277,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-22 13:55:02
+-- Dump completed on 2023-09-22 19:48:32
