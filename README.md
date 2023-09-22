@@ -85,7 +85,7 @@ El proyecto se baso en la migracion de una base de datos MongoDB a MySQL
 ---
 ### MÓDULO DE PELICULAS
 
-Este módulo permite la consulta de muebles. Además, permite visualizar reportes filtrados por diferentes criterios de búsqueda.
+Este módulo permite la consulta de un catalogo de peliculas sobre una base de datos MySQL. Además, permite visualizar reportes filtrados por diferentes criterios de búsqueda.
 
 #### Métodos HTTP
 | Tipo | URI | Descripción |
